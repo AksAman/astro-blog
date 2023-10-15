@@ -5,6 +5,7 @@ interface GreetingProps {
 }
 
 const Greeting: React.FC<GreetingProps> = ({ messages }) => {
+  console.log(import.meta.env);
   const randomMessage = () =>
     messages[Math.floor(Math.random() * messages.length)];
   const [greeting, setGreeting] = React.useState(messages[0]);
