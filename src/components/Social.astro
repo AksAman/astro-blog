@@ -1,0 +1,9 @@
+---
+const { title, href } = Astro.props;
+---
+
+<li>
+  <a class="hover:underline" href={href}>
+    {title}
+  </a>
+</li>

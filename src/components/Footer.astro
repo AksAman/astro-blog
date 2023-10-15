@@ -1,0 +1,29 @@
+---
+type Platform = {
+  title: string;
+  href: string;
+};
+import Social from "./Social.astro";
+
+const platforms: Platform[] = [
+  {
+    title: "Github",
+    href: "https://github.com/AksAman",
+  },
+  {
+    title: "Twitter",
+    href: "https://x.com/amankrsingh03",
+  },
+];
+---
+
+<footer class="bg-gray-800 text-white w-full px-8 py-4">
+  <p class="text-xl font-bold">Find me at</p>
+  <ul>
+    {
+      platforms.map((p) => {
+        return <Social title={p.title} href={p.href} />;
+      })
+    }
+  </ul>
+</footer>
