@@ -2,10 +2,11 @@
 import { cn } from "@/lib/utils";
 import Hamburger from "./Hamburger.astro";
 import { buttonVariants } from "./react/ui/button";
+import ThemeIcon from "./ThemeIcon.astro";
 ---
 
 <nav
-  class="flex flex-row justify-between items-center px-4 py-4 bg-slate-100 shadow relative"
+  class="flex flex-row justify-between items-center px-4 py-4 bg-slate-100 dark:bg-slate-700 shadow relative"
 >
   <div>
     <a href="/" class="font-bold text-lg tracking-wider">Home</a>
@@ -14,6 +15,7 @@ import { buttonVariants } from "./react/ui/button";
   <div class="gap-2 nav-links hidden sm:flex">
     <a href="/about/" class={cn(buttonVariants({ variant: "link" }))}>About</a>
     <a href="/blog/" class={cn(buttonVariants({ variant: "link" }))}>Blog</a>
+    <ThemeIcon />
   </div>
 </nav>
 
