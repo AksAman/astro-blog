@@ -2,17 +2,16 @@
 import Posts from "@/components/Posts.astro";
 import Tags from "@/components/Tags.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import type { Frontmatter } from "@/types/frontmatter";
-import { MarkdownInstance } from "astro/dist/@types/astro";
-
+import type { Frontmatter, Post } from "@/types/frontmatter";
+import { getCollection } from "astro:content";
 export const getStaticPaths = async () => {
-  const posts = await Astro.glob<Frontmatter>("../../pages/posts/*.md");
+  const posts = await getCollection("posts");
 
   const tags = [
     ...new Set(
       posts
         .map((p) => {
-          return p.frontmatter.tags;
+          return p.data.tags;
         })
         .flat()
     ),
@@ -27,16 +26,16 @@ export const getStaticPaths = async () => {
 };
 
 type Props = {
-  posts: MarkdownInstance<Frontmatter>[];
+  posts: Post[];
   tags: string[];
 };
 
 const { tag } = Astro.params;
 const { posts, tags } = Astro.props;
 
-let filteredPosts: MarkdownInstance<Frontmatter>[] = [];
+let filteredPosts: Post[] = [];
 if (tag) {
-  filteredPosts = posts.filter((p) => p.frontmatter.tags?.includes(tag));
+  filteredPosts = posts.filter((p) => p.data.tags?.includes(tag));
 }
 ---
 
