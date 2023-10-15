@@ -1,5 +1,6 @@
 ---
-import Navigation from "@/components/Navigation.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
 const pageTitle = "About me";
 const identity = {
   firstName: "Aman",
@@ -10,28 +11,14 @@ const identity = {
 };
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro | {pageTitle}</title>
-  </head>
-  <body class="flex flex-col min-h-screen">
-    <Navigation />
-    <div
-      class="flex flex-col m-auto items-center justify-center flex-grow h-full border w-full"
-    >
-      <h1 class="text-3xl font-bold pb-4">Astro</h1>
-      <h2 class="underline">{pageTitle}</h2>
-      <ul class="list-disc">
-        <li>My name is Peter Parker, uh sorry I meant {identity.firstName}</li>
-        <li>
-          I live in {identity.country} and I work as the {identity.occupation}
-           at {identity.company}!
-        </li>
-      </ul>
-    </div>
-  </body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <h1 class="text-3xl font-bold pb-4">Astro</h1>
+  <h2 class="underline">{pageTitle}</h2>
+  <ul class="list-disc">
+    <li>My name is Peter Parker, uh sorry I meant {identity.firstName}</li>
+    <li>
+      I live in {identity.country} and I work as the {identity.occupation}
+       at {identity.company}!
+    </li>
+  </ul>
+</BaseLayout>

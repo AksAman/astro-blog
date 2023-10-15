@@ -1,0 +1,29 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+type Props = {
+  frontmatter: {
+    title: string;
+    author: string;
+    pubDate: string;
+    image: {
+      url: string;
+      alt: string;
+    };
+    tags: string[];
+  };
+};
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout pageTitle=`Blog: ${frontmatter.title}`>
+  <div class="container">
+    <h1 class="text-4xl font-bold">{frontmatter.title}</h1>
+    <div class="my-2 border-b-[1px]">
+      <p class="text-sm text-gray-400">Written by {frontmatter.author}</p>
+      <p class="text-sm text-gray-400">
+        Published at {new Date(frontmatter.pubDate).toDateString()}
+      </p>
+    </div>
+    <slot />
+  </div>
+</BaseLayout>
