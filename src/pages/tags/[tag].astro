@@ -41,8 +41,7 @@ if (tag) {
 ---
 
 <BaseLayout pageTitle={`Posts tagged with ${tag}`}>
-  <Tags tags={tags}>
-    <p>Posts tagged with {tag}</p>
-    <Posts posts={filteredPosts} />
-  </Tags>
+  <Tags tags={tags} />
+  <p>Posts tagged with {tag}</p>
+  <Posts posts={filteredPosts} />
 </BaseLayout>
