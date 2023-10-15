@@ -1,13 +1,30 @@
 ---
-
+import Hamburger from "./Hamburger.astro";
 ---
 
-<nav class="flex flex-row justify-between px-4 py-4 bg-slate-100 shadow">
+<nav
+  class="flex flex-row justify-between items-center px-4 py-4 bg-slate-100 shadow relative"
+>
   <div>
-    <a href="/" class="font-bold text-lg -tracking-wider">Home</a>
+    <a href="/" class="font-bold text-lg tracking-wider">Home</a>
   </div>
-  <div class="flex gap-2">
+  <Hamburger />
+  <div class="gap-2 nav-links hidden sm:flex">
     <a href="/about/">About</a>
     <a href="/blog/">Blog</a>
   </div>
 </nav>
+
+<style>
+  @media (max-width: 640px) {
+    .nav-links.expanded {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      flex-direction: column;
+      text-align: right;
+      padding-right: 0.5rem;
+    }
+  }
+</style>
