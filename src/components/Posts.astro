@@ -1,0 +1,20 @@
+---
+import type { MarkdownInstance } from "astro/dist/@types/astro";
+import type { Frontmatter } from "@/types/frontmatter";
+
+type Props = {
+  posts: MarkdownInstance<Frontmatter>[];
+};
+
+const { posts } = Astro.props;
+---
+
+{
+  posts.map((post) => {
+    return (
+      <a class="hover:underline text-blue-500" href={post.url}>
+        {post.frontmatter.title}
+      </a>
+    );
+  })
+}

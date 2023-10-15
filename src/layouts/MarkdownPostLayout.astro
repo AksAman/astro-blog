@@ -1,4 +1,5 @@
 ---
+import Tags from "@/components/Tags.astro";
 import BaseLayout from "./BaseLayout.astro";
 import type { Frontmatter } from "@/types/frontmatter";
 type Props = {
@@ -22,6 +23,7 @@ const { frontmatter } = Astro.props;
         alt={frontmatter.image.alt}
         width="300"
       />
+      <Tags tags={frontmatter.tags} />
     </div>
     <slot />
   </div>
