@@ -1,33 +1,16 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-type Blog = {
-  title: string;
-  href: string;
-};
+import type { Frontmatter } from "@/types/frontmatter";
 
-const blogs: Blog[] = [
-  {
-    title: "Post 1",
-    href: "/posts/post-1",
-  },
-  {
-    title: "Post 2",
-    href: "/posts/post-2",
-  },
-  {
-    title: "Post 3",
-    href: "/posts/post-3",
-  },
-];
-
+const posts = await Astro.glob<Frontmatter>("../pages/posts/*.md");
 const pageTitle = "My blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1 class="text-3xl font-bold">My blog</h1>
+  <h1 class="text-3xl font-bold mb-2">My blog</h1>
   {
-    blogs.map((b) => {
-      return <a href={b.href}>{b.title}</a>;
+    posts.map((post) => {
+      return <a href={post.url}>{post.frontmatter.title}</a>;
     })
   }
 </BaseLayout>

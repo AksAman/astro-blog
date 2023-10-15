@@ -1,17 +1,8 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import type { Frontmatter } from "@/types/frontmatter";
 type Props = {
-  frontmatter: {
-    title: string;
-    description: string;
-    author: string;
-    pubDate: string;
-    image: {
-      url: string;
-      alt: string;
-    };
-    tags: string[];
-  };
+  frontmatter: Frontmatter;
 };
 const { frontmatter } = Astro.props;
 ---
@@ -25,7 +16,12 @@ const { frontmatter } = Astro.props;
       </p>
       <p class="text-sm text-gray-400"><em>{frontmatter.description}</em></p>
       <p class="text-sm text-gray-400">Written by {frontmatter.author}</p>
-      <img class="invert py-2" src={frontmatter.image.url} alt={frontmatter.image.alt} width="300" />
+      <img
+        class="invert py-2"
+        src={frontmatter.image.url}
+        alt={frontmatter.image.alt}
+        width="300"
+      />
     </div>
     <slot />
   </div>
