@@ -1,5 +1,7 @@
 ---
+import { cn } from "@/lib/utils";
 import Hamburger from "./Hamburger.astro";
+import { buttonVariants } from "./react/ui/button";
 ---
 
 <nav
@@ -10,8 +12,8 @@ import Hamburger from "./Hamburger.astro";
   </div>
   <Hamburger />
   <div class="gap-2 nav-links hidden sm:flex">
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
+    <a href="/about/" class={cn(buttonVariants({ variant: "link" }))}>About</a>
+    <a href="/blog/" class={cn(buttonVariants({ variant: "link" }))}>Blog</a>
   </div>
 </nav>
 
