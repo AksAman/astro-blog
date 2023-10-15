@@ -7,6 +7,8 @@ const baseSite = import.meta.env.PUBLIC_VERCEL_URL ? `https://${import.meta.env.
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), tailwind()],
+  integrations: [react(), tailwind(
+    { applyBaseStyles: false }
+  )],
   site: baseSite,
 });

@@ -1,5 +1,7 @@
 ---
+import Greeting from "@/components/react/Greeting";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import "@/styles/globals.css";
 
 const pageTitle = "Astro | Home";
 ---
@@ -7,4 +9,6 @@ const pageTitle = "Astro | Home";
 <BaseLayout pageTitle={pageTitle}>
   <h1 class="text-3xl font-bold">Astro</h1>
   <h1 class="text-center">My Astro Site from the tutorial</h1>
+  <Greeting messages={["Hi", "Hello", "Howdy", "Hey there"]} />
+  <Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
 </BaseLayout>
