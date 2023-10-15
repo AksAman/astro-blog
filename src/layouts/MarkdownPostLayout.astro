@@ -15,10 +15,10 @@ const { frontmatter } = Astro.props;
     <h1 class="text-4xl font-bold">{frontmatter.title}</h1>
     <div class="my-2 border-b-[1px]">
       <p class="text-sm text-gray-400">
-        Published at {frontmatter.pubDate}
+        Published at {frontmatter.pubDate.toDateString()}
       </p>
       <p class="text-sm text-gray-400"><em>{frontmatter.description}</em></p>
-      <p class="text-sm text-gray-400">1 Written by {frontmatter.author}</p>
+      <p class="text-sm text-gray-400">Written by {frontmatter.author}</p>
       <img
         class="py-2"
         src={frontmatter.image.url}
