@@ -1,23 +1,28 @@
 ---
-import PostsPrerendered from "@/components/PostsPrerendered.astro";
 import Tags from "@/components/Tags.astro";
 import type { Frontmatter } from "@/types/frontmatter";
+
 import BaseLayout from "./BaseLayout.astro";
 type Props = {
   frontmatter: Frontmatter;
+  id: string;
 };
-const { frontmatter } = Astro.props;
+const { frontmatter, id } = Astro.props;
 ---
 
 <BaseLayout pageTitle={`Blog: ${frontmatter.title}`}>
   <div class="w-50 h-50 bg-red-500"></div>
   <div class="container pb-4">
-    <h1 class="text-4xl font-bold">{frontmatter.title}</h1>
+    <h1 class="text-4xl font-bold" transition:name={`post-${id}`}>
+      {frontmatter.title}
+    </h1>
     <div class="my-2 border-b-[1px]">
       <p class="text-sm text-gray-400">
         Published at {frontmatter.pubDate.toDateString()}
       </p>
-      <p class="text-sm text-gray-400"><em>{frontmatter.description}</em></p>
+      <p class="text-sm text-gray-400">
+        <em>{frontmatter.description}</em>
+      </p>
       <p class="text-sm text-gray-400">Written by {frontmatter.author}</p>
       <img
         class="py-2"
@@ -29,6 +34,6 @@ const { frontmatter } = Astro.props;
       <Tags tags={frontmatter.tags} />
     </div>
     <slot />
-    <PostsPrerendered dir="row" />
+    <!-- <PostsPrerendered dir="row" /> -->
   </div>
 </BaseLayout>

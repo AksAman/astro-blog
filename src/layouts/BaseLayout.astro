@@ -5,6 +5,7 @@ type Props = {
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import { TailwindIndicator } from "@/components/react/TailwindIndicator";
+import { ViewTransitions } from "astro:transitions";
 
 import "@/styles/globals.css";
 
@@ -19,11 +20,15 @@ const { pageTitle } = Astro.props;
     <meta name="description" content="Astro tutorial page" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle || "Astro Blog"}</title>
+    <ViewTransitions />
   </head>
   <body class="flex flex-col min-h-[100dvh]">
     <Header />
+    <h1 transition:animate="slide" class="p-4">
+      {pageTitle}
+    </h1>
     <div
-      class="flex flex-col m-auto items-center justify-center flex-grow h-full border w-full"
+      class="flex flex-col m-auto items-center justify-center flex-grow h-full w-full"
     >
       <slot />
     </div>

@@ -11,7 +11,11 @@ const { posts } = Astro.props;
 {
   posts.map((post) => {
     return (
-      <a class="hover:underline text-blue-500" href={`/posts/${post.slug}`}>
+      <a
+        class="hover:underline text-blue-500"
+        href={`/posts/${post.slug}`}
+        transition:name={`post-${post.id}`}
+      >
         {post.data.title}
       </a>
     );
